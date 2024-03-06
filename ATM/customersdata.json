@@ -1,0 +1,50 @@
+[
+ {
+  "Id": 1,
+  "FirstName": "Jennifer",
+  "LastName": "Aniston",
+  "IdentityNumber": "112233445566",
+  "Password": "Jennifer1",
+  "Balance": 8000500
+ },
+ {
+  "Id": 2,
+  "FirstName": "Morgan",
+  "LastName": "Freeman",
+  "IdentityNumber": "223344556677",
+  "Password": "Morgan1",
+  "Balance": 12000000
+ },
+ {
+  "Id": 3,
+  "FirstName": "Denzel",
+  "LastName": "Washington",
+  "IdentityNumber": "334455667788",
+  "Password": "Denzel1",
+  "Balance": 1050000
+ },
+ {
+  "Id": 4,
+  "FirstName": "Chris",
+  "LastName": "Evans",
+  "IdentityNumber": "445566778899",
+  "Password": "Chris1",
+  "Balance": 9999999
+ },
+ {
+  "Id": 5,
+  "FirstName": "Meryl",
+  "LastName": "Streep",
+  "IdentityNumber": "111222333444",
+  "Password": "Meryl1",
+  "Balance": 75000000
+ },
+ {
+  "Id": 6,
+  "FirstName": "Cameron",
+  "LastName": "Diaz",
+  "IdentityNumber": "222333444555",
+  "Password": "Cameron1",
+  "Balance": 14500000
+ }
+]
