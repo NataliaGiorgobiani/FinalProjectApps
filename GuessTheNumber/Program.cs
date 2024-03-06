@@ -4,54 +4,61 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Choose level:easy - e, medium - m, hard - h");
-            char level = char.Parse(Console.ReadLine());
-            Random number = new Random();
-            int GeneredNumber = 0;
+            try
+            {
+                Console.WriteLine("Choose level:easy - e, medium - m, hard - h");
+                char level = char.Parse(Console.ReadLine());
+                Random number = new Random();
+                int GeneredNumber = 0;
 
 
-            if (level == 'e')
-            {
-                GeneredNumber = number.Next(1, 25);
-            }
-            else if (level == 'm')
-            {
-                GeneredNumber = number.Next(1, 50);
-            }
-            else if (level == 'h')
-            {
-                GeneredNumber = number.Next(1, 100);
-            }
-            else
-            {
-                Console.WriteLine("Choose correct symbol!");
-            }
-
-
-            for (int i = 1; i < 11; i++)
-            {
-                Console.WriteLine("input your number:");
-                int selected = int.Parse(Console.ReadLine());
-                int rand = number.Next();
-                if (GeneredNumber < selected && i != 10)
+                if (level == 'e')
                 {
-                    Console.WriteLine("Your number is High! Reduce it!");
+                    GeneredNumber = number.Next(1, 25);
                 }
-                else if (GeneredNumber > selected && i != 10)
+                else if (level == 'm')
                 {
-                    Console.WriteLine("Your number is Low! Increase it");
+                    GeneredNumber = number.Next(1, 50);
                 }
-                else if (GeneredNumber == selected)
+                else if (level == 'h')
                 {
-                    Console.WriteLine("Congratulations!You Won!");
-                    break;
+                    GeneredNumber = number.Next(1, 100);
                 }
-                else if (i == 10)
+                else
                 {
-                    Console.WriteLine("Sorry, you lose!");
-                    break;
+                    Console.WriteLine("Choose correct symbol!");
                 }
 
+
+                for (int i = 1; i < 11; i++)
+                {
+                    Console.WriteLine("input your number:");
+                    int selected = int.Parse(Console.ReadLine());
+                    int rand = number.Next();
+                    if (GeneredNumber < selected && i != 10)
+                    {
+                        Console.WriteLine("Your number is High! Reduce it!");
+                    }
+                    else if (GeneredNumber > selected && i != 10)
+                    {
+                        Console.WriteLine("Your number is Low! Increase it");
+                    }
+                    else if (GeneredNumber == selected)
+                    {
+                        Console.WriteLine("Congratulations!You Won!");
+                        break;
+                    }
+                    else if (i == 10)
+                    {
+                        Console.WriteLine("Sorry, you lose!");
+                        break;
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Somthing Wrong!: {ex.Message}");
             }
         }
     }
