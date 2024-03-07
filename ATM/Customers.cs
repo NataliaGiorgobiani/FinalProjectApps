@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ATM
 {
     public class Customers
     {
-        private const string _fileLocation = "C:\\Users\\madnj\\OneDrive\\Desktop\\natas\\project\\Project_4\\Project_4\\customersdata.json";
+        private const string _fileLocation = "C:\\Users\\madnj\\OneDrive\\Desktop\\Final\\ATM\\customersdata.json";
         public static List<Customers> Customer = new();
-        private const string _fileLocationLog = "C:\\Users\\madnj\\OneDrive\\Desktop\\natas\\project\\Project_4\\Project_4\\Log.json";
+        private const string _fileLocationLog = "C:\\Users\\madnj\\OneDrive\\Desktop\\Final\\ATM\\Log.json";
 
+        public static Customers imp = new();
 
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -25,17 +27,17 @@ namespace ATM
 
         public void DepositMoney(int money)
         {
-            this.Balance += money;
+            imp.Balance += money;
         }
 
         public void WithdrawMoney(int money)
         {
-            this.Balance -= money;
+            imp.Balance -= money;
         }
 
         public void CheckWallet()
         {
-            Console.WriteLine($"Account Balance: {this.Balance}");
+            Console.WriteLine($"Account Balance: {imp.Balance}");
         }
 
 
@@ -111,6 +113,9 @@ namespace ATM
 
 
             string json = JsonSerializer.Serialize(Customer, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(_fileLocation, json);
+
+            string json1 = JsonSerializer.Serialize(Customer, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_fileLocationLog, json);
 
         }
