@@ -10,11 +10,9 @@ namespace ATM
 {
     public class Customers
     {
-        private const string _fileLocation = "C:\\Users\\madnj\\OneDrive\\Desktop\\Final\\ATM\\customersdata.json";
-        public static List<Customers> Customer = new();
-        private const string _fileLocationLog = "C:\\Users\\madnj\\OneDrive\\Desktop\\Final\\ATM\\Log.json";
-
-        public static Customers imp = new();
+        private const string _fileLocation = @"../../../customersdata.json";
+        //public static List<Customers> Customer = new();
+        private const string _fileLocationLog = @"../../../Log.json";
 
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -23,24 +21,26 @@ namespace ATM
         public string Password { get; set; }
         public int Balance { get; set; }
 
+        public static List<Customers> Customer = new();
 
-
-        public void DepositMoney(int money)
+        public void DepositMoney(int amount)
         {
-            imp.Balance += money;
+            Balance += amount;
         }
-
-        public void WithdrawMoney(int money)
+        public void WithdrawMoney(int amount)
         {
-            imp.Balance -= money;
-        }
+            if (amount > Balance)
+            {
+                Console.WriteLine("Insufficient funds!");
+                return;
+            }
 
+            Balance -= amount;
+        }
         public void CheckWallet()
         {
-            Console.WriteLine($"Account Balance: {imp.Balance}");
+            Console.WriteLine($"Account Balance is : {this.Balance}");
         }
-
-
         public void GeneratePassword()
         {
             Random random = new Random();
@@ -59,17 +59,16 @@ namespace ATM
             }
 
         }
-
         public void Registration(Customers model)
         {
             model.Id = Customer.Max(x => x.Id) + 1;
             Customer.Add(model);
-
         }
         public static void Read()
         {
             var data = File.ReadAllText(_fileLocation);
             Customer = Parse(data);
+            return;
         }
 
         private static List<Customers> Parse(string input)
@@ -93,13 +92,11 @@ namespace ATM
             {
                 throw new NullReferenceException("Data not found");
             }
-
             return result;
         }
 
         public static void Save(Customers model)
         {
-
             if (Customer.Count == 0)
             {
                 model.Id = 1;
@@ -109,30 +106,15 @@ namespace ATM
                 model.Id = Customer.Max(x => x.Id) + 1;
             }
             Customer.Add(model);
-
-
-
             string json = JsonSerializer.Serialize(Customer, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_fileLocation, json);
-
-            string json1 = JsonSerializer.Serialize(Customer, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_fileLocationLog, json);
-
         }
-
-        /*public static void SaveOperation(Customers operations)
+        public static void Loginfo()
         {
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-            };
-            operations.Add(Customers.Save);
-            string json = JsonSerializer.Serialize(Operations, options);
-            File.WriteAllText(_fileLocationLog, json);
+            string json1 = JsonSerializer.Serialize(Customer, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(_fileLocationLog, json1);
+
         }
-*/
-
-
+            
     }
 }
