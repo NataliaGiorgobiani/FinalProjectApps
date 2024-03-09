@@ -6,7 +6,7 @@
         {
              List<string> words = new List<string>
              {
-               "apple","banana","orange","grape","kiwi","strawberry","pineapple","blueberry","peach","watermelon"
+                 "apple","banana","orange","grape","kiwi","strawberry","pineapple","blueberry","peach","watermelon"
              };
               Random choosen = new Random();
 
@@ -26,9 +26,9 @@
                     }
 
 
-                    int index = 0;
+                    int index = 6;
 
-                    while (!TestWinGame(symbole, secretWord))
+                    while (index > 0)
                     {
                         Console.WriteLine(symbole);
                         Console.Write("Iput a letter :");
@@ -49,7 +49,19 @@
                             Console.WriteLine("Incorrect guess.");
                         }
 
-                        index++;
+                        if (TestWinGame(symbole))
+                        {
+                            Console.WriteLine("Congratulations! You Won!");
+                            break;
+                        }
+
+                        index--;
+                        Console.WriteLine($"Is left: {index}");
+                    }
+
+                    if (!TestWinGame(symbole))
+                    {
+                        Console.WriteLine($"Sorry, you lost. The word was: {secretWord}");
                     }
 
                     Console.Write("Do you want Play again? (y/n): ");
@@ -66,17 +78,18 @@
             }
         }
 
-       private static bool TestWinGame(char[] charsArray, string secret)
+       private static bool TestWinGame(char[] charsArray)
        {
-            for (int i = 0; i < secret.Length; i++)
+            foreach (char c in charsArray)
             {
-                if (secret[i] != charsArray[i])
+                if (c == '*')
                 {
-                   return false;
+                    return false;
                 }
             }
-            return true;
             
-       }
+            return true;
+
+        }
     }
 }
