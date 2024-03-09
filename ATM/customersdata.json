@@ -32,12 +32,12 @@
     "Balance": 9999999
   },
   {
-    "Id": 17,
+    "Id": 21,
     "FirstName": "Meryl",
     "LastName": "Streep",
     "IdentityNumber": "111222333444",
     "Password": "Meryl1",
-    "Balance": 75000827
+    "Balance": 74999982
   },
   {
     "Id": 6,
@@ -54,61 +54,6 @@
     "IdentityNumber": "01011086381",
     "Password": "5397",
     "Balance": 0
-  },
-  {
-    "Id": 12,
-    "FirstName": "Meryl",
-    "LastName": "Streep",
-    "IdentityNumber": "111222333444",
-    "Password": "Meryl1",
-    "Balance": 75000380
-  },
-  {
-    "Id": 12,
-    "FirstName": "Meryl",
-    "LastName": "Streep",
-    "IdentityNumber": "111222333444",
-    "Password": "Meryl1",
-    "Balance": 75000380
-  },
-  {
-    "Id": 13,
-    "FirstName": "Meryl",
-    "LastName": "Streep",
-    "IdentityNumber": "111222333444",
-    "Password": "Meryl1",
-    "Balance": 75000500
-  },
-  {
-    "Id": 14,
-    "FirstName": "Meryl",
-    "LastName": "Streep",
-    "IdentityNumber": "111222333444",
-    "Password": "Meryl1",
-    "Balance": 75000460
-  },
-  {
-    "Id": 16,
-    "FirstName": "Meryl",
-    "LastName": "Streep",
-    "IdentityNumber": "111222333444",
-    "Password": "Meryl1",
-    "Balance": 75000707
-  },
-  {
-    "Id": 16,
-    "FirstName": "Meryl",
-    "LastName": "Streep",
-    "IdentityNumber": "111222333444",
-    "Password": "Meryl1",
-    "Balance": 75000707
-  },
-  {
-    "Id": 17,
-    "FirstName": "Meryl",
-    "LastName": "Streep",
-    "IdentityNumber": "111222333444",
-    "Password": "Meryl1",
-    "Balance": 75000827
   }
+ 
 ]

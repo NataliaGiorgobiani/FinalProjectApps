@@ -4,20 +4,21 @@
     {
         static void Main(string[] args)
         {
+             List<string> words = new List<string>
+             {
+               "apple","banana","orange","grape","kiwi","strawberry","pineapple","blueberry","peach","watermelon"
+             };
+              Random choosen = new Random();
+
             while (true)
             {
                 try
                 {
-
-                    List<string> words = new List<string>
-            {
-                "apple","banana","orange","grape","kiwi","strawberry","pineapple","blueberry","peach","watermelon"
-            };
-                    Random choosen = new Random();
                     int WordIndex = choosen.Next(words.Count);
                     string secretWord = words[WordIndex];
 
                     //Console.WriteLine(secretWord);
+
                     char[] symbole = new char[secretWord.Length];
                     for (int i = 0; i < symbole.Length; i++)
                     {
@@ -33,18 +34,28 @@
                         Console.Write("Iput a letter :");
                         char letter = char.Parse(Console.ReadLine());
 
-                        for (int i = 0; i < secretWord.Length; i++)
+                        if (secretWord.Contains(letter))
                         {
-                            if (letter == secretWord[i])
+                            for (int i = 0; i < secretWord.Length; i++)
                             {
-                                symbole[i] = letter;    // simbolos Canacvleba 
+                                if (secretWord[i] == letter)
+                                {
+                                    symbole[i] = letter;
+                                }
                             }
-
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect guess.");
                         }
 
                         index++;
                     }
 
+                    Console.Write("Do you want Play again? (y/n): ");
+                    string playAgain = Console.ReadLine();
+                    if (playAgain != "y")
+                        break;
 
                 }
                 catch (Exception ex)
@@ -55,17 +66,17 @@
             }
         }
 
-            private static bool TestWinGame(char[] charsArray, string secret)
+       private static bool TestWinGame(char[] charsArray, string secret)
+       {
+            for (int i = 0; i < secret.Length; i++)
             {
-                for (int i = 0; i < secret.Length; i++)
+                if (secret[i] != charsArray[i])
                 {
-                    if (secret[i] != charsArray[i])
-                    {
-                        return false;
-                    }
+                   return false;
                 }
-                return true;
+            }
+            return true;
             
-             }
+       }
     }
 }

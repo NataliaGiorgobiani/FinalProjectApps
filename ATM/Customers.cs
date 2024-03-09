@@ -12,8 +12,8 @@ namespace ATM
     {
         private const string _fileLocation = @"../../../customersdata.json";
         //public static List<Customers> Customer = new();
-        private const string _fileLocationLog = @"../../../Log.json";
-
+        private const string _fileLocationLog = @"../../../Log.txt";
+        
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -22,6 +22,7 @@ namespace ATM
         public int Balance { get; set; }
 
         public static List<Customers> Customer = new();
+       
 
         public void DepositMoney(int amount)
         {
@@ -109,10 +110,10 @@ namespace ATM
             string json = JsonSerializer.Serialize(Customer, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_fileLocation, json);
         }
-        public static void Loginfo()
+        public static void Loginfo(Customers customer)
         {
-            string json1 = JsonSerializer.Serialize(Customer, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_fileLocationLog, json1);
+            string logEntry = $"{DateTime.Now}: Customer with ID {customer.Id} - {customer.FirstName} {customer.LastName} {customer.Balance}";
+            File.AppendAllText(_fileLocationLog, logEntry + Environment.NewLine);
 
         }
             

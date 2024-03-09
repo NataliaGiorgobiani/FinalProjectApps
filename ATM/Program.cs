@@ -139,9 +139,9 @@
                             Console.WriteLine("Enter amount of money:");
                             int depositAmount = int.Parse(Console.ReadLine());
                             customer.DepositMoney(depositAmount);
-                            Customers.Save(customer);
+                           // Customers.Save(customer);
                             Console.WriteLine("Done!");
-                            Customers.Loginfo();
+                            Customers.Loginfo(customer);
                             //Console.WriteLine(Customers.Read);
 
                             break;
@@ -151,15 +151,15 @@
                             Console.WriteLine("Enter amount of money:");
                             int withdrawAmount = int.Parse(Console.ReadLine());
                             customer.WithdrawMoney(withdrawAmount);
-                            Customers.Save(customer);
+                            //Customers.Save(customer);
                             Console.WriteLine("Done!");
-                            Customers.Loginfo();
+                            Customers.Loginfo(customer);
                             break;
 
                         case '3':
 
                             customer.CheckWallet();
-                            Customers.Loginfo();
+                            Customers.Loginfo(customer);
                             break;
 
                         case '4':
